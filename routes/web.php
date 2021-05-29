@@ -20,3 +20,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/user/{user_id}', [App\Http\Controllers\ProfileController::class,'index'])->name('index');
+// Route::get('/profile/{user_id}/edit', [App\Http\Controllers\ProfileController::class,'dashboard'])->name('dashboard');
+// Route::get('/profile/{user_id}/save', [App\Http\Controllers\ProfileController::class,'dashboard'])->name('dashboard');
+// Route::get('/profile/{user_id}/delete', [App\Http\Controllers\ProfileController::class,'dashboard'])->name('dashboard');

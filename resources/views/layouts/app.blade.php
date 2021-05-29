@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/profile.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -65,8 +66,22 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ url('/home') }}">
+                                        {{ __('home') }}
+                                    </a>
+
+                                    <a class="dropdown-item" href="{{ url('user/' . Auth::id()) }}" onclick=" event.preventDefault();
+                                                    document.getElementById('profile').submit();">
+                                        {{ __('profile') }}
+                                    </a>
+
+                                    <form id="profile" action="{{ url('user/' . Auth::id()) }}" method="get"
+                                        class="d-none">
+                                        @csrf
+                                    </form>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                             document.getElementById('logout-form').submit();">
+                                                                document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
